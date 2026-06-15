@@ -1,0 +1,136 @@
+.game-container {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+.board-header {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-h);
+  margin-bottom: 16px;
+}
+
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.card {
+  aspect-ratio: 1;
+  cursor: pointer;
+  perspective: 600px;
+  user-select: none;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+}
+
+.card.flipped .card-inner,
+.card.matched .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-front {
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.card-back {
+  background: var(--code-bg);
+  border: 2px solid var(--border);
+  transform: rotateY(180deg);
+  font-size: 2.5rem;
+}
+
+.card.matched .card-back {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.45);
+}
+
+.gameover {
+  padding: 24px 16px;
+}
+
+.gameover p {
+  margin-bottom: 16px;
+}
+
+.gameover input {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--code-bg);
+  color: var(--text-h);
+  font-size: 1rem;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.gameover button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 4px;
+  transition: opacity 0.2s;
+}
+
+.gameover button:hover {
+  opacity: 0.82;
+}
+
+.gameover .error {
+  color: #ef4444;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+.scoreboard {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.scoreboard ol {
+  display: inline-block;
+  text-align: left;
+  padding-left: 1.4rem;
+  margin: 12px 0 0;
+}
+
+.scoreboard li {
+  margin-bottom: 4px;
+}
+
+@media (max-width: 480px) {
+  .board-grid {
+    gap: 8px;
+  }
+
+  .card-back {
+    font-size: 1.8rem;
+  }
+}
